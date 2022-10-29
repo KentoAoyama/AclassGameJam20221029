@@ -7,7 +7,6 @@ public class CrocodileSpawner : MonoBehaviour
     [SerializeField, Header("スポーン座標のリスト")] List<GameObject> SpawnPoints = new();
     [SerializeField, Header("ワニのオブジェクト")] GameObject Crocodile;
     [Tooltip("スポーン座標のインデックス")] int _spawnPointIndex;
-    [Tooltip("前のインデックス")] int _oldIndex = 100;
 
     [SerializeField, Header("スポーン間隔時間")] float _waitTime;
     [Tooltip("スポーン可能かどうか")] bool _canSpawn;
@@ -42,14 +41,20 @@ public class CrocodileSpawner : MonoBehaviour
 
         _spawnPointIndex = Random.Range(0, SpawnPoints.Count);   //出現させる場所を決定
 
-        if (_oldIndex != _spawnPointIndex)  //被ったら抽選し直し
+        if (SpawnPoints[_spawnPointIndex].transform.childCount == 0)  //被ったら(子オブジェクトがなかったら)出現
         {
             Debug.Log(_spawnPointIndex);
             crocodileCount++;
             Instantiate(Crocodile, SpawnPoints[_spawnPointIndex].transform); //ワニを出現
-            _waitTime -= 0.01f;
+            if (_waitTime > 0f)
+            {
+                _waitTime -= 0.01f;
+            }
+            else
+            {
+                _waitTime = 0f;
+            }
         }
-        _oldIndex = _spawnPointIndex;
 
 
         //Debug.Log(crocodileCount);
