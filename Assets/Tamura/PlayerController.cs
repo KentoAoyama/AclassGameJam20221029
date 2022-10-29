@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("押したかどうか")]　bool _isPunched;
     [Tooltip("オーディオソース")] AudioSource _audioSource;
     [SerializeField, Header("ハンマーで殴る音")] AudioClip _punchHammer;
+    [SerializeField, Header("ワニをたたいた時に出るエフェクト")] GameObject _effect;
 
     void Start()
     {
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
         {
             ScoreSystem.AddScore(1);
             waniJudge.OnWani = false;
+            _effect.SetActive(true);
             //CrocodileSpawner.crocodileCount--;
         }
 
@@ -96,6 +98,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(_flipHammer);
         //反転を戻す
         _hammer.flipX = false;
+        _effect.SetActive(false);
         yield return new WaitForSeconds(_interval);
         //ハンマーを元の場所に戻す
         //Debug.Log(_originPosition);
