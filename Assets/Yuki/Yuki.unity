@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &73581612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8766919444453885690, guid: d6387d65a65049f4199999be336cab07, type: 3}
+  m_PrefabInstance: {fileID: 1201615093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &493433477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,6 +194,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8766919444453885690, guid: d6387d65a65049f4199999be336cab07, type: 3}
   m_PrefabInstance: {fileID: 493433477}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &557326406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8766919444453885690, guid: d6387d65a65049f4199999be336cab07, type: 3}
+  m_PrefabInstance: {fileID: 1673801494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &948957351
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,8 +232,11 @@ MonoBehaviour:
   - {fileID: 2352995179092825354}
   - {fileID: 493433478}
   - {fileID: 1922986894}
+  - {fileID: 557326406}
+  - {fileID: 986701173}
+  - {fileID: 73581612}
   Crocodile: {fileID: 7414558901675487119, guid: cb61ed049ffcfcf4b879e33026763077, type: 3}
-  _waitTime: 3
+  _waitTime: 0.5
 --- !u!4 &948957353
 Transform:
   m_ObjectHideFlags: 0
@@ -239,6 +252,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &986701173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8766919444453885690, guid: d6387d65a65049f4199999be336cab07, type: 3}
+  m_PrefabInstance: {fileID: 1128818393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1128818393
 PrefabInstance:
   m_ObjectHideFlags: 0

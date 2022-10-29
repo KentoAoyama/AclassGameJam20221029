@@ -7,11 +7,11 @@ public class CrocodileSpawner : MonoBehaviour
     [SerializeField, Header("スポーン座標のリスト")] List<GameObject> SpawnPoints = new();
     [SerializeField, Header("ワニのオブジェクト")] GameObject Crocodile;
     [Tooltip("スポーン座標のインデックス")] int _spawnPointIndex;
-    [Tooltip("前のインデックス")] int _oldIndex;
+    [Tooltip("前のインデックス")] int _oldIndex = 100;
 
     [SerializeField, Header("スポーン間隔時間")] float _waitTime;
     [Tooltip("スポーン可能かどうか")] bool _canSpawn;
-    [Tooltip("現在のワニの出現数")] public static int crocodileCount;
+    [Tooltip("現在のワニの出現数")] public static int crocodileCount = 0;
 
 
     // Start is called before the first frame update
@@ -25,30 +25,35 @@ public class CrocodileSpawner : MonoBehaviour
     void Update()
     {
 
-        if (TimeSystem._isGame)
+        if (crocodileCount >= 6) _canSpawn = false;
+
+        if (TimeSystem._isGame && _canSpawn)
         {
-            _spawnPointIndex = Random.Range(0, SpawnPoints.Count);   //出現させる場所を決定
-            if (_oldIndex == _spawnPointIndex)  //被ったら抽選し直し
-            {
-                _canSpawn = false;
-                return;
-            }
-            _oldIndex = _spawnPointIndex;
-
-            if (_canSpawn && crocodileCount < 5)
-            {
-                StartCoroutine(Spawn()); ;    //指定間隔でワニをスポーンさせる
-            }
-
+            StartCoroutine(Spawn());    //指定間隔でワニをスポーンさせる
         }
 
     }
 
     private IEnumerator Spawn() //スポーンスパン
     {
+        //Debug.Log("コルーチンがこわれてる");
+        _canSpawn = false;
         yield return new WaitForSeconds(_waitTime); // 指定時間待機
-        Instantiate(Crocodile, SpawnPoints[_spawnPointIndex].transform); //ワニを出現
-        crocodileCount++;
+
+        _spawnPointIndex = Random.Range(0, SpawnPoints.Count);   //出現させる場所を決定
+
+        if (_oldIndex != _spawnPointIndex)  //被ったら抽選し直し
+        {
+            Debug.Log(_spawnPointIndex);
+            crocodileCount++;
+            Instantiate(Crocodile, SpawnPoints[_spawnPointIndex].transform); //ワニを出現
+            _waitTime -= 0.01f;
+        }
+        _oldIndex = _spawnPointIndex;
+
+
+        //Debug.Log(crocodileCount);
         _canSpawn = true;
+
     }
 }
