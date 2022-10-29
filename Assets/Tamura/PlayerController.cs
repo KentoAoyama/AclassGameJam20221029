@@ -6,16 +6,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField, Header("ワニが出てくるところ")] GameObject[] _wani = new GameObject[6];
-    [Tooltip("ハンマーのもともとの位置")] Transform _originPosition;
+    [Tooltip("ハンマーのもともとの位置")] Vector2 _originPosition;
     [Tooltip("ハンマーの画像")] SpriteRenderer _hammer;
     [SerializeField, Header("叩けるインターバル")] float _interval = 0.2f;
-    bool _isPunched;
+    [SerializeField, Header("ハンマーが反転するまでの時間")] float _flipHammer = 0.2f;
+    [Tooltip("押したかどうか")]　bool _isPunched;
 
     void Start()
     {
-        _originPosition = GetComponent<Transform>();
+        _originPosition = GetComponent<Transform>().position;
         _hammer = GetComponent<SpriteRenderer>();
-
+        //Debug.Log(_originPosition);
     }
 
     void Update()
@@ -25,8 +26,8 @@ public class PlayerController : MonoBehaviour
         if(!_isPunched)
         {
             
-
             //押されたキーによって動作が変わる
+            //左から、sdfjklキーがワニがスポーンする場所に対応してる
             switch (Input.inputString)
             {
                 case "s":
@@ -67,22 +68,28 @@ public class PlayerController : MonoBehaviour
     /// <returns></returns>
     IEnumerator PunchWani(GameObject wani)
     {
+        WaniJudgement waniJudge = wani.GetComponent<WaniJudgement>();
 
-        //叩いた場所にワニがいたら得点が増える
-        if (wani.GetComponent<WaniJudgement>().OnWani)
+        //叩いた場所にワニがいたら得点が増えてワニを消す
+        if (waniJudge.OnWani)
         {
             ScoreSystem.AddScore(1);
-            Destroy(wani.GetComponent<WaniJudgement>().WaniKun);
+            Destroy(waniJudge.WaniKun);
             CrocodileSpawner.crocodileCount--;
         }
 
         //ハンマーでたたく動き
+        //反転させて、殴りたい場所まで移動する
         _isPunched = true;
         _hammer.flipX = true;
         this.transform.position = wani.transform.position;
-        yield return new WaitForSeconds(_interval);
+        yield return new WaitForSeconds(_flipHammer);
+        //反転を戻す
         _hammer.flipX = false;
-        this.transform.position = _originPosition.position;
+        yield return new WaitForSeconds(_interval);
+        //ハンマーを元の場所に戻す
+        //Debug.Log(_originPosition);
+        this.transform.position = _originPosition;
         _isPunched = false;
     }
 
