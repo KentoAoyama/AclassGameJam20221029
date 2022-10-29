@@ -38,28 +38,28 @@ public class PlayerController : MonoBehaviour
                 //左から、sdfjklキーがワニがスポーンする場所に対応してる
                 switch (Input.inputString)
                 {
-                    case "s":
-                        Debug.Log("sがおされた");
-                        StartCoroutine(PunchWani(_wani[0]));
-                        break;
                     case "d":
                         Debug.Log("dがおされた");
-                        StartCoroutine(PunchWani(_wani[1]));
+                        StartCoroutine(PunchWani(_wani[0]));
                         break;
                     case "f":
                         Debug.Log("fがおされた");
+                        StartCoroutine(PunchWani(_wani[1]));
+                        break;
+                    case "g":
+                        Debug.Log("gがおされた");
                         StartCoroutine(PunchWani(_wani[2]));
+                        break;
+                    case "h":
+                        Debug.Log("hがおされた");
+                        StartCoroutine(PunchWani(_wani[3]));
                         break;
                     case "j":
                         Debug.Log("jがおされた");
-                        StartCoroutine(PunchWani(_wani[3]));
+                        StartCoroutine(PunchWani(_wani[4]));
                         break;
                     case "k":
                         Debug.Log("kがおされた");
-                        StartCoroutine(PunchWani(_wani[4]));
-                        break;
-                    case "l":
-                        Debug.Log("lがおされた");
                         StartCoroutine(PunchWani(_wani[5]));
                         break;
                     default:
