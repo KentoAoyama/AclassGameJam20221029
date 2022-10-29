@@ -6,7 +6,7 @@ using DG.Tweening;
 using UnityEngine.SceneManagement;
 public class FadeSystem : MonoBehaviour
 {
-    [Tooltip("フェードのオブジェクト")]
+    [Tooltip("フェードのImageがあるObject")]
     [SerializeField] GameObject _fadeObject;
 
     [Tooltip("フェードに使うImage")]
