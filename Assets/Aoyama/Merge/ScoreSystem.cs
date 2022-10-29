@@ -24,9 +24,9 @@ public class ScoreSystem : MonoBehaviour
 
 
     /// <summary>スコアを加算するstaticなメソッド</summary>
-    public static void AddScore()
+    public static void AddScore(int addScore)
     {
-        _score++;
+        _score += addScore;
 
         var sequence = DOTween.Sequence();
         sequence.Insert(0f, _scoreText.transform.DOScale(1.2f, 0.2f).SetEase(Ease.OutCirc));

@@ -8,7 +8,7 @@ public class AoyamaTest : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            ScoreSystem.AddScore();
+            ScoreSystem.AddScore(1);
         }
     }
 }
