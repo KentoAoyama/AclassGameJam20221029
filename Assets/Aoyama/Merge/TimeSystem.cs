@@ -35,6 +35,8 @@ public class TimeSystem : MonoBehaviour
 
     bool _isTimeTextchange = false;
 
+    List<GameObject> aa = new();
+
     /// <summary>ƒQ[ƒ€’†‚Å‚ ‚é‚±‚Æ‚ğ•\‚·•Ï”</summary>
     public static bool _isGame;
 
