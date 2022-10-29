@@ -11,7 +11,7 @@ public class CrocodileSpawner : MonoBehaviour
 
     [SerializeField, Header("スポーン間隔時間")] float _waitTime;
     [Tooltip("スポーン可能かどうか")] bool _canSpawn;
-    [Tooltip("現在のワニの出現数")] static int crocodileCount;
+    [Tooltip("現在のワニの出現数")] public static int crocodileCount;
 
 
     // Start is called before the first frame update
