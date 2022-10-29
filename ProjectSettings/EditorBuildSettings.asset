@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Oyama/sceans/Title.unity
+    guid: 32f540cbc9eb9a2479999775a4b284b0
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 696b75e4d94b3434693f0c30df90e52e
   - enabled: 1
     path: Assets/Oyama/sceans/Result.unity
     guid: e1c52ce501a2a4b41a1a20a297e1cec4
-  - enabled: 1
-    path: Assets/Oyama/sceans/Title.unity
-    guid: 32f540cbc9eb9a2479999775a4b284b0
   m_configObjects: {}
