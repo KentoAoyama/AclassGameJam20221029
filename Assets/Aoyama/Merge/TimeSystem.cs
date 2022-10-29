@@ -29,7 +29,7 @@ public class TimeSystem : MonoBehaviour
 
     [SerializeField] FadeSystem _fadeSystem;
 
-    float _countDown = 3.5f;
+    float _countDown = 3.9f;
     float _timer;
     float _startTime;
 
@@ -101,6 +101,9 @@ public class TimeSystem : MonoBehaviour
         _isGame = false;
         _countDownText.text = _finishText;
 
-        _fadeSystem.StartFadeOut(_resultSceneName);
+        if (_timer <= 1)
+        {
+            _fadeSystem.StartFadeOut(_resultSceneName);
+        }
     }
 }

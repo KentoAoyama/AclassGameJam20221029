@@ -29,8 +29,8 @@ public class ScoreSystem : MonoBehaviour
         _score += addScore;
 
         var sequence = DOTween.Sequence();
-        sequence.Insert(0f, _scoreText.transform.DOScale(1.2f, 0.2f).SetEase(Ease.OutCirc));
-        sequence.Insert(0.5f, _scoreText.transform.DOScale(1f, 0.1f).SetEase(Ease.OutCirc));
+        sequence.Insert(0f, _scoreText.transform.DOScale(1.3f, 0.2f).SetEase(Ease.OutBack));
+        sequence.Insert(0.5f, _scoreText.transform.DOScale(1f, 0.2f).SetEase(Ease.OutBack));
 
         sequence.Play();
 
