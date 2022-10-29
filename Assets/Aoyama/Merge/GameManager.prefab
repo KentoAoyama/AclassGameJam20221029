@@ -164,8 +164,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUI
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2104906628089189257, guid: fca7e516e214e464499dac58a8ddddd7, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fca7e516e214e464499dac58a8ddddd7, type: 3}
 --- !u!224 &3612841357767402285 stripped
 RectTransform:
