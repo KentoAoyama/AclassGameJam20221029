@@ -48,7 +48,7 @@ public class TimeSystem : MonoBehaviour
         //開始時のタイムを保存
         _startTime = _gameTime;
 
-        _fadeSystem.StartFadeIn();
+        _fadeSystem.StartFadeIn(); 
     }
 
     private void FixedUpdate()
