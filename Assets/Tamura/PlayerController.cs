@@ -22,44 +22,49 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        //まだパンチしてないとき
-        if(!_isPunched)
+        //ゲームが始まってないと動かせない
+        if(TimeSystem._isGame)
         {
-            
-            //押されたキーによって動作が変わる
-            //左から、sdfjklキーがワニがスポーンする場所に対応してる
-            switch (Input.inputString)
+
+            //まだパンチしてないとき
+            if (!_isPunched)
             {
-                case "s":
-                    Debug.Log("sがおされた");
-                    StartCoroutine(PunchWani(_wani[0]));
-                    break;
-                case "d":
-                    Debug.Log("dがおされた");
-                    StartCoroutine(PunchWani(_wani[1]));
-                    break;
-                case "f":
-                    Debug.Log("fがおされた");
-                    StartCoroutine(PunchWani(_wani[2]));
-                    break;
-                case "j":
-                    Debug.Log("jがおされた");
-                    StartCoroutine(PunchWani(_wani[3]));
-                    break;
-                case "k":
-                    Debug.Log("kがおされた");
-                    StartCoroutine(PunchWani(_wani[4]));
-                    break;
-                case "l":
-                    Debug.Log("lがおされた");
-                    StartCoroutine(PunchWani(_wani[5]));
-                    break;
-                default:
-                    break;
+
+                //押されたキーによって動作が変わる
+                //左から、sdfjklキーがワニがスポーンする場所に対応してる
+                switch (Input.inputString)
+                {
+                    case "s":
+                        Debug.Log("sがおされた");
+                        StartCoroutine(PunchWani(_wani[0]));
+                        break;
+                    case "d":
+                        Debug.Log("dがおされた");
+                        StartCoroutine(PunchWani(_wani[1]));
+                        break;
+                    case "f":
+                        Debug.Log("fがおされた");
+                        StartCoroutine(PunchWani(_wani[2]));
+                        break;
+                    case "j":
+                        Debug.Log("jがおされた");
+                        StartCoroutine(PunchWani(_wani[3]));
+                        break;
+                    case "k":
+                        Debug.Log("kがおされた");
+                        StartCoroutine(PunchWani(_wani[4]));
+                        break;
+                    case "l":
+                        Debug.Log("lがおされた");
+                        StartCoroutine(PunchWani(_wani[5]));
+                        break;
+                    default:
+                        break;
+                }
+
             }
 
         }
-        
 
     }
     
