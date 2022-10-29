@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class TimeSystem : MonoBehaviour
 {
@@ -15,6 +15,12 @@ public class TimeSystem : MonoBehaviour
     [Tooltip("ゲーム終了時に出す文字")]
     [SerializeField]  string _finishText = "おわり";
 
+    [Tooltip("タイマーが変化する色")]
+    [SerializeField] Color _timerChangeColor = Color.red;
+
+    [Tooltip("")]
+    [SerializeField] float _timerColorChangeInterval = 1.0f;
+
     [Tooltip("ゲームの制限時間")]
     [SerializeField] float _gameTime;
 
@@ -25,6 +31,9 @@ public class TimeSystem : MonoBehaviour
 
     float _countDown = 3.5f;
     float _timer;
+    float _startTime;
+
+    bool _isTimeTextchange = false;
 
     /// <summary>ゲーム中であることを表す変数</summary>
     public static bool _isGame;
@@ -32,7 +41,12 @@ public class TimeSystem : MonoBehaviour
 
     private void Start()
     {
-        _timer = _gameTime;
+        //タイマーをリセット
+        _timer = _gameTime;        
+        //開始時のタイムを保存
+        _startTime = _gameTime;
+
+        _fadeSystem.StartFadeIn();
     }
 
     private void FixedUpdate()
@@ -53,6 +67,13 @@ public class TimeSystem : MonoBehaviour
         }
         else
         {
+            //タイムが残り1/3になったら色を点滅させる
+            if (_timer < _startTime/3 && !_isTimeTextchange)
+            {
+                _isTimeTextchange = true;
+                _timerText.DOColor(_timerChangeColor, _timerColorChangeInterval).SetLoops(-1, LoopType.Yoyo);                    
+            }
+
             //タイマー
             _timer -= Time.deltaTime;
 
