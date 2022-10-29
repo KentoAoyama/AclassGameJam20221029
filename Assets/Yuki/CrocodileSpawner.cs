@@ -16,7 +16,6 @@ public class CrocodileSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TimeSystem._isGame = true; //デバッグ用　あとで消す
         _canSpawn = true;
     }
 

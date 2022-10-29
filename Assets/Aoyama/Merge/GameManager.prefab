@@ -49,10 +49,10 @@ MonoBehaviour:
   _timerText: {fileID: 3642781512034358730}
   _countDownText: {fileID: 6606638652622122082}
   _finishText: "\u304A\u308F\u308A"
-  _timerChangeColor: {r: 1, g: 0, b: 0, a: 1}
+  _timerChangeColor: {r: 0.8207547, g: 0, b: 0, a: 1}
   _timerColorChangeInterval: 1
   _gameTime: 30
-  _resultSceneName: 
+  _resultSceneName: Result
   _fadeSystem: {fileID: 9147530601549288412}
 --- !u!114 &9147530601549288412
 MonoBehaviour:
@@ -164,7 +164,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUI
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2104906628089189257, guid: fca7e516e214e464499dac58a8ddddd7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fca7e516e214e464499dac58a8ddddd7, type: 3}
 --- !u!224 &3612841357767402285 stripped
 RectTransform:

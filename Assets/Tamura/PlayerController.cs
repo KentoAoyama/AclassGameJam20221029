@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         _originPosition = GetComponent<Transform>().position;
         _hammer = GetComponent<SpriteRenderer>();
-        TimeSystem._isGame = true; //å„Ç≈è¡Ç∑
+        _audioSource = GetComponent<AudioSource>();
         //Debug.Log(_originPosition);
     }
 
