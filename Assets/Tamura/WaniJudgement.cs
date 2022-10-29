@@ -5,15 +5,15 @@ using UnityEngine;
 /// <summary>ワニが出てきてるか判定してくれる</summary>
 public class WaniJudgement : MonoBehaviour
 {
-    [SerializeField] bool _onWani;
+    [SerializeField, Tooltip("ワニが出てるかどうか")] bool _onWani;
     public bool OnWani { get => _onWani; }
-    GameObject _waniKun;
+    [Tooltip("出てきたワニ。消すときに使う")] GameObject _waniKun;
     public GameObject WaniKun { get => _waniKun; }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        //
+        //ワニが出てきてたらtrueにして、出てきたわにを代入する
         if (collision.gameObject.tag == "Target")
         {
             _onWani = true;
@@ -25,10 +25,11 @@ public class WaniJudgement : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
 
-        //いなくなったら殴れない　←？？？？？
+        //いなくなったらfalseにしてワニ君はいなくなる
         if (collision.gameObject.tag == "Target")
         {
             _onWani = false;
+            _waniKun = default;
         }
 
     }
