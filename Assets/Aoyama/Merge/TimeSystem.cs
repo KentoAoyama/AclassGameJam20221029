@@ -29,7 +29,7 @@ public class TimeSystem : MonoBehaviour
 
     [SerializeField] FadeSystem _fadeSystem;
 
-    float _countDown = 3.5f;
+    float _countDown = 3.9f;
     float _timer;
     float _startTime;
 
