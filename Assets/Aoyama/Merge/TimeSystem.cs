@@ -101,6 +101,9 @@ public class TimeSystem : MonoBehaviour
         _isGame = false;
         _countDownText.text = _finishText;
 
-        _fadeSystem.StartFadeOut(_resultSceneName);
+        if (_timer <= 1)
+        {
+            _fadeSystem.StartFadeOut(_resultSceneName);
+        }
     }
 }
