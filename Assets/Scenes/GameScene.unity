@@ -437,6 +437,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6606638652622122082, guid: 9e17dc1da4ce056419c2bc7ca48cb896, type: 3}
+      propertyPath: m_Text
+      value: "\uFF13"
+      objectReference: {fileID: 0}
     - target: {fileID: 9147530601549288409, guid: 9e17dc1da4ce056419c2bc7ca48cb896, type: 3}
       propertyPath: m_RootOrder
       value: 1
