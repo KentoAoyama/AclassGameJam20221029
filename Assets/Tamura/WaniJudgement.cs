@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>ワニが出てきてるか判定してくれる</summary>
+[RequireComponent(typeof(BoxCollider2D))]
 public class WaniJudgement : MonoBehaviour
 {
     [SerializeField, Tooltip("ワニが出てるかどうか")] bool _onWani;
-    public bool OnWani { get => _onWani; }
-    [Tooltip("出てきたワニ。消すときに使う")] GameObject _waniKun;
-    public GameObject WaniKun { get => _waniKun; }
+    public bool OnWani { get => _onWani; set => _onWani = value; }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,7 +16,6 @@ public class WaniJudgement : MonoBehaviour
         if (collision.gameObject.tag == "Target")
         {
             _onWani = true;
-            _waniKun = collision.gameObject;
         }
 
     }
@@ -29,7 +27,6 @@ public class WaniJudgement : MonoBehaviour
         if (collision.gameObject.tag == "Target")
         {
             _onWani = false;
-            _waniKun = default;
         }
 
     }

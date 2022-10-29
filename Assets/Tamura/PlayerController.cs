@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>ワニをたたくハンマーの動き</summary>
+[RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField, Header("ワニが出てくるところ")] GameObject[] _wani = new GameObject[6];
+    [SerializeField, Header("ハンマーで叩く場所")] GameObject[] _wani = new GameObject[6];
     [Tooltip("ハンマーのもともとの位置")] Vector2 _originPosition;
     [Tooltip("ハンマーの画像")] SpriteRenderer _hammer;
     [SerializeField, Header("叩けるインターバル")] float _interval = 0.2f;
     [SerializeField, Header("ハンマーが反転するまでの時間")] float _flipHammer = 0.2f;
     [Tooltip("押したかどうか")]　bool _isPunched;
+    [Tooltip("オーディオソース")] AudioSource _audioSource;
+    [SerializeField, Header("ハンマーで殴る音")] AudioClip _punchHammer;
 
     void Start()
     {
         _originPosition = GetComponent<Transform>().position;
         _hammer = GetComponent<SpriteRenderer>();
+        TimeSystem._isGame = true; //後で消す
         //Debug.Log(_originPosition);
     }
 
@@ -75,19 +79,20 @@ public class PlayerController : MonoBehaviour
     {
         WaniJudgement waniJudge = wani.GetComponent<WaniJudgement>();
 
-        //叩いた場所にワニがいたら得点が増えてワニを消す
+        //叩いた場所にワニがいたら、得点が増える
         if (waniJudge.OnWani)
         {
             ScoreSystem.AddScore(1);
-            Destroy(waniJudge.WaniKun);
-            CrocodileSpawner.crocodileCount--;
+            waniJudge.OnWani = false;
+            //CrocodileSpawner.crocodileCount--;
         }
 
         //ハンマーでたたく動き
-        //反転させて、殴りたい場所まで移動する
+        //反転させて、殴りたい場所まで移動する。音もなる。
         _isPunched = true;
         _hammer.flipX = true;
         this.transform.position = wani.transform.position;
+        _audioSource.PlayOneShot(_punchHammer);
         yield return new WaitForSeconds(_flipHammer);
         //反転を戻す
         _hammer.flipX = false;
