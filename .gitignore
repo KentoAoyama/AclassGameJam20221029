@@ -62,3 +62,6 @@ crashlytics-build.properties
 UserSettings/EditorUserSettings.asset
 UserSettings/Layouts/default-2021.dwlt
 Assets/AssetStoreTools.meta
+Assets/Resources.meta
+Assets/Resources/DOTweenSettings.asset
+Assets/Resources/DOTweenSettings.asset.meta
